@@ -1,0 +1,60 @@
+/* Estilos CSS */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.links{
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 24px;
+    color: #505F98;
+    margin-right: 30px;
+}
+
+.title-alz{
+    /* Landie */
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: bold;
+    /* or 119% */
+
+    /* Colour/Logo/Primary */
+    color: #37447E;
+
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+
+.btn-entrar {
+    bottom: 0.25px;
+    text-decoration: none !important;
+    width: 6vw;
+    height: 3vw;
+
+
+    /* Colour/Main/Blue/800 */
+    background: #111B47;
+    border-radius: 10px;
+
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+
+    /* Colour/Secondary/White 100 (general) */
+    color: #FFFFFF;
+
+}
