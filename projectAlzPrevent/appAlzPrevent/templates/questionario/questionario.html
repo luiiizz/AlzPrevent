@@ -33,7 +33,7 @@
                 </ul>
             </nav>
             <h1 class="title-alz">Questionário</h1>
-            <button class="btn-entrar">Sair</button>
+            <button class="btn-entrar"onclick="bt_sair()">Sair</button>
         </div>
     </header>
 
@@ -117,6 +117,9 @@
     <script>
       function bt_quest2(){
         self.location = "{% url 'questionario2'%}"
+      }
+      function bt_sair(){
+        self.location = "{% url 'home'%}"
       }
     </script>
 

@@ -34,38 +34,56 @@
                 </ul>
             </nav>
             <h1 class="title-alz">AlzPrevent</h1>
-            <button class="btn-entrar">Entrar</button>
+            <button class="btn-compartilhar" onclick="bt_compartilhar()">Compartilhar</button>
         </div>
     </header>
 
-    <div class="d-flex column justify-content-between">
-      <div class="resultado">
+    <div class="d-flex justify-content-center flex-column mt-4" style="align-content: center;flex-wrap: wrap;">
+      <div class="resultado border border-2 p-4 container-result">
 
-        <div class="d-flex">
-          <div>
-            <h4 class="title-resultado"><a class="user-name">Luiz</a>, seus resultados no AlzPrevent:</h4>
+        <div class="d-flex flex-column">
+          <div class="d-flex">
+            <div class="w-75">
+              <h4 class="title-resultado"><a class="user-name">Luiz</a>, seus resultados no AlzPrevent:</h4>
 
-            <p class="text-resultado">
-              Probabilidade de Desenvolvimento da Doença de Alzheimer: 75%
-            </p>
+              <p class="text-resultado mt-3">
+                Probabilidade de Desenvolvimento da Doença de Alzheimer: <a class="user-result">60%</a>
+              </p>
 
-            <ul>
-              <li>Idade</li>
-              <li>Histórico Familiar</li>
-              <li>Colesterol Alto</li>
-            </ul>
+              <p class="text-resultado">
+                Principais Fatores de Risco Associados:
+              </p>
+
+              <ul class="list-resultado">
+                <li>Idade</li>
+                <li>Histórico Familiar</li>
+                <li>Colesterol Alto</li>
+              </ul>
+
+            </div>
+
+            <div class="m-lg-3">
+              <img class="im-ai img-fluid" src="{% static 'images/AI.png' %}" alt="main image">
+            </div>
           </div>
+          
+          <p class="text-resultado">
+            Recomendações:
+          </p>
 
-          <div class="m-lg-3">
-            <img class="im-ai" src="{% static 'images/AI.png' %}" alt="main image">
-          </div>
+          <ul class="list-recommend">
+            <li><a class="recomend-topic">Consulta Médica:</a> Consulte um médico especialista em neurologia ou geriatria para uma avaliação completa e acompanhamento individualizado.</li>
+            <li><a class="recomend-topic">Adaptação do Estilo de Vida:</a> Adote hábitos saudáveis como alimentação balanceada, prática regular de exercícios físicos, controle do estresse e sono de qualidade.</li>
+            <li><a class="recomend-topic">Monitoramento Contínuo:</a> Realize exames periódicos e acompanhe seus fatores de risco com regularidade.</li>
+            <li><a class="recomend-topic">Participação em Pesquisas:</a> Considere participar de pesquisas clínicas sobre a doença de Alzheimer para contribuir para o avanço do conhecimento e desenvolvimento de novos tratamentos.</li>
+          </ul>
 
         </div>
 
-          <button class="animated-button" onclick="bt_quest()">
+          <button class="animated-button" onclick="bt_compartilhar()">
             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
               <path
-                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+              d="M18 16.08C17.24 16.08 16.56 16.38 16.04 16.88L8.91 12.7C8.96 12.47 9 12.24 9 12C9 11.76 8.96 11.53 8.91 11.3L15.96 7.12C16.5 7.62 17.21 7.92 18 7.92C19.66 7.92 21 6.58 21 4.96C21 3.34 19.66 2 18 2C16.34 2 15 3.34 15 4.96C15 5.2 15.04 5.43 15.09 5.66L8.04 9.84C7.5 9.34 6.79 9.04 6 9.04C4.34 9.04 3 10.38 3 12C3 13.62 4.34 14.96 6 14.96C6.79 14.96 7.5 14.66 8.04 14.16L15.09 18.34C15.04 18.57 15 18.8 15 19.04C15 20.66 16.34 22 18 22C19.66 22 21 20.66 21 19.04C21 17.42 19.66 16.08 18 16.08Z"
               ></path>
             </svg>
             <span class="text">Compartilhar</span>
@@ -76,15 +94,29 @@
               ></path>
             </svg>
           </button>
+          
+      </div>
 
+      <div class="lembre-se">
+
+        <p class="text-lembre">
+          Lembre-se:
+        </p>
+
+        <ul class="list-lembre">
+          <li>O AlzPrevent é uma ferramenta de triagem, e <a class="lembre-alert">não um diagnóstico definitivo</a>.</li>
+          <li>Um diagnóstico precoce e a adoção de medidas preventivas podem retardar o declínio cognitivo e melhorar a qualidade de vida.</li>
+          <li>Consulte um profissional de saúde para obter orientação individualizada.</li>
+        </ul>
 
       </div>
+
     </div>
 
 
     <script>
-      function bt_quest(){
-        self.location = "{% url 'questionario'%}"
+      function bt_compartilhar(){
+        self.location = "https://twitter.com/intent/tweet?text=Confira%20meus%20resultados%20no%20AlzPrevent:%20{{ request.build_absolute_uri }}"
       }
     </script>
 

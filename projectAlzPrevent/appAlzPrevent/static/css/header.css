@@ -58,3 +58,25 @@ nav ul {
     color: #FFFFFF;
 
 }
+
+.btn-compartilhar{
+    bottom: 0.25px;
+    text-decoration: none !important;
+    width: 10vw;
+    height: 3vw;
+
+
+    /* Colour/Main/Blue/800 */
+    background: #111B47;
+    border-radius: 10px;
+
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+
+    /* Colour/Secondary/White 100 (general) */
+    color: #FFFFFF;
+}
