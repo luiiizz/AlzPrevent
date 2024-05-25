@@ -1,0 +1,150 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/alzheimer-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/questionario.css' %}">
+
+    <title>Questionário</title>
+  </head>
+  <body>
+    <header class="mt-3">
+        <div class="d-flex container justify-content-between align-items-center" style="max-width: 90vw !important;">
+            <nav class="">
+                <ul class="d-flex justify-content-around" style="padding: 0;">
+                    <li><a href="{% url 'home'%}" class="links">Início</a></li>
+                    <li><a href="#" class="links">Sobre nós</a></li>
+                    <li><a href="#" class="links">Contato</a></li>
+                </ul>
+            </nav>
+            <h1 class="title-alz">Questionário</h1>
+            <button class="btn-entrar">Sair</button>
+        </div>
+    </header>
+
+    <div class="d-flex column justify-content-between">
+      <div class="fomulario">
+        <!-- <h4 class="title-fomulario">Olá Luiz!</h4> -->
+
+        <p class="info">
+          Continue respondendo as perguntas a seguir para análise de riscos do desenvolvimento futuro de Alzheimer
+        </p>
+
+        <form class="mt-4">
+          <div class="form-group">
+            <label for="colesterol">Você sofre de colesterol alto? Qual seu nível de colesterol LDL (colesterol "ruim”)?</label>
+            <select class="form-control" id="escolaridade">
+              <option value="1">Ideal: inferior a 130 mg/dL</option>
+              <option value="2">Próximo ao ideal: 130-159 mg/dL</option>
+              <option value="3">Alto: 160-189 mg/dL</option>
+              <option value="4">Muito alto: 190 mg/dL ou superior</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="neurociticismo">Você sofre de Neurociticismo (caracterizado por tristeza, mau humor e instabilidade emocional)?</label>
+            <select class="form-control" id="neurociticismo">
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="matamatica">Você tem boas habilidades matemáticas? Se sim, classifique.</label>
+            <select class="form-control" id="matamatica">
+              <option value="1">1. Ruim</option>
+              <option value="2">2. Regular</option>
+              <option value="3">3. Boa</option>
+              <option value="4">4. Ótima</option>
+              <option value="5">5. Excelente</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="cintura">Qual resultado da sua relação cintura-quadril?</label>
+            <small id="cintura" class="form-text text-muted">
+              <br>Se não souber, acesse <a href="https://www.tuasaude.com/relacao-cintura-quadril/">https://www.tuasaude.com/relacao-cintura-quadril/</a> para calcular.
+            </small>
+            
+            <div class="mt-2 border border-primary rounded p-2 p-lg-3" style="border-style: dashed !important;">
+              <small class="form-check-label pt-5">⠀⠀⠀Risco de saúde ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ Homem ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Mulher</small>
+              <div class="col-sm-10 mt-1">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="cintura" id="cintura1" value="1" checked>
+                  <label class="form-check-label" for="cintura1">
+                    Baixo⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Inferior a 0,80⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Inferior a 0,80
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="cintura" id="cintura2" value="2">
+                  <label class="form-check-label" for="cintura2">
+                    Moderado⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀0,81 a 0,85⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀0,96 a 1,0
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="cintura" id="cintura3" value="3">
+                  <label class="form-check-label" for="cintura3">
+                    Alto⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Superior 0,86⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Superior 1,0
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="altura">Você já fez teste de capacidade cognitiva? (Mini Exame do Estado Mental (MEEM)) Se sim, qual foi sua pontuação?</label>
+            <input type="number" class="form-control" id="altura" placeholder="Informe um número entre 1 e 30" max="30" min="1">
+          </div>
+
+        </form>
+          
+        <div class="d-flex justify-content-between">
+          <button class="animated-button2" onclick="bt_quest1()">
+            <span class="text">Voltar</span>
+          </button>
+
+          <button class="animated-button" type="submit" onclick="bt_result()">
+            <span class="text">Enviar</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div>
+        <!-- <img class="im-madam" src="{% static 'images/alz-1.png' %}" alt="main image"> -->
+      </div>
+
+    </div>
+
+    <script>
+      function bt_quest1(){
+        self.location = "{% url 'questionario'%}"
+      }
+
+      function bt_result(){
+        self.location = "{% url 'resultado'%}"
+      }
+    </script>
+    
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>

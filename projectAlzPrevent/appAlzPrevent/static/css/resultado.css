@@ -1,14 +1,23 @@
 /* Estilos CSS */
 
-.im-madam{
-    width: 45vw;
-    height: 90vh;
+.im-ai{
+    width: 20vw;
+    height: 40vh;
     float: right;
     margin-right: 5%;
 }
 
+.user-name{
+  font-family: "Poetsen One", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 48px;
+  color: rgba(0, 120, 240, 0.65);
+  text-decoration: none;
+}
 
-.text-presentation{
+.text-resultado{
     width: 80%;
     margin-top: 20px;
     font-family: 'Roboto', sans-serif;
@@ -19,7 +28,7 @@
     color: #505F98;
 }
 
-.text2-presentation{
+.text2-resultado{
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -28,18 +37,18 @@
     color: #505F98;
 }
 
-.title-presentation{
-    font-family: 'Roboto', sans-serif;
+.title-resultado{
+    font-family: "Poetsen One", sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 50px;
+    font-size: 22px;
     color: #091133;
 }
 
 
-.presentation{
+.resultado{
     width: 50%;
-    margin: 100px 0 0 100px;
+    /* margin: 100px 0 0 100px; */
 }
 
 

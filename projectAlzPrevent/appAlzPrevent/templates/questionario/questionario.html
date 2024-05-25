@@ -11,6 +11,12 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <link rel="stylesheet" href="{% static 'css/questionario.css' %}">
 
@@ -33,13 +39,13 @@
 
     <div class="d-flex column justify-content-between">
       <div class="fomulario">
-        <h4 class="title-fomulario">Olá Luiz</h4>
+        <h4 class="title-fomulario">Olá Luiz!</h4>
 
-        <p >
+        <p class="info">
           Responda as perguntas a seguir para análise de riscos do desenvolvimento futuro de Alzheimer
         </p>
 
-        <form class="mt-4">
+        <form class="mt-4" method="post" action=""> 
           <div class="form-group">
             <label for="idade">Qual sua idade?</label>
             <input type="number" class="form-control" id="idade" placeholder="Informe a idade">
@@ -51,22 +57,54 @@
           </div>
 
           <div class="form-group mt-4">
-            <label for="exampleFormControlSelect1">Example select</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
+            <label for="historico">Há histórico de Alzheimer na sua família?</label>
+            <select class="form-control" id="historico">
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="escolaridade">Qual sua escolaridade?</label>
+            <select class="form-control" id="escolaridade">
+              <option value="1">1. Analfabeto</option>
+              <option value="2">2. Fundamental Incompleto</option>
+              <option value="3">3. Fundamental Completo</option>
+              <option value="4">4. Médio Incompleto</option>
+              <option value="5">5. Médio Completo</option>
+              <option value="6">6. Superior Incompleto</option>
+              <option value="6">6. Superior Incompleto</option>
+              <option value="7">7. Mestrado</option>
+              <option value="7">8. Doutorado</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="inteligente">Quanto você se considera uma pessoal inteligente?</label>
+            <small id="inteligente" class="form-text text-muted">
+              <br>Responda o quiz no link a seguir e selecione uma opção.
+              <a href="https://querobolsa.com.br/revista/3-testes-de-qi-online-e-gratuitos" target="_blank">Link Quiz</a>
+            </small>
+            <select class="form-control" id="inteligente">
+              <option value="1">1. Muito pouco</option>
+              <option value="2">2. Pouco</option>
+              <option value="3">3. Moderado</option>
+              <option value="4">4. Muito</option>
+              <option value="5">5. Super</option>
             </select>
           </div>
 
         </form>
           
+        <div class="d-flex justify-content-between">
+          <button class="animated-button2" type="reset">
+            <span class="text">Cancelar</span>
+          </button>
 
-        <button class="animated-button2">
-          <span class="text">Saiba Mais</span>
-        </button>
+          <button class="animated-button" type="submit" onclick="bt_quest2()">
+            <span class="text">Próximo</span>
+          </button>
+        </div>
 
       </div>
 
@@ -76,7 +114,11 @@
 
     </div>
 
-    
+    <script>
+      function bt_quest2(){
+        self.location = "{% url 'questionario2'%}"
+      }
+    </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

@@ -8,3 +8,9 @@ def home(request):
 
 def questionario(request):
     return render(request, 'questionario/questionario.html')
+
+def questionario2(request):
+    return render(request, 'questionario/questionario2.html')
+
+def resultado(request):
+    return render(request, 'resultado/resultado.html')
