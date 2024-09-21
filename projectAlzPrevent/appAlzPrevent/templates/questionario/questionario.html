@@ -30,6 +30,7 @@
                     <li><a href="{% url 'home'%}" class="links">Início</a></li>
                     <li><a href="#" class="links">Sobre nós</a></li>
                     <li><a href="#" class="links">Contato</a></li>
+                    <li><a href="#" class="links">Prevenção</a></li>
                 </ul>
             </nav>
             <h1 class="title-alz">Questionário</h1>
@@ -48,12 +49,17 @@
         <form class="mt-4" method="post" action=""> 
           <div class="form-group">
             <label for="idade">Qual sua idade?</label>
-            <input type="number" class="form-control" id="idade" placeholder="Informe a idade">
+            <input type="number" class="form-control" id="idade" min="1" placeholder="Informe a idade">
           </div>
 
           <div class="form-group mt-4">
             <label for="altura">Qual sua altura?</label>
-            <input type="number" class="form-control" id="altura" placeholder="Informe a altura">
+            <input type="number" class="form-control" id="altura" min="50" max="300" step="0.01" placeholder="Informe a altura. Ex: 1.75" required>
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="altura">Qual seu peso?</label>
+            <input type="number" class="form-control" id="altura" min="1" placeholder="Informe o peso. Ex: 70">
           </div>
 
           <div class="form-group mt-4">
@@ -80,17 +86,20 @@
           </div>
 
           <div class="form-group mt-4">
-            <label for="inteligente">Quanto você se considera uma pessoal inteligente?</label>
+            <label for="inteligente">Como você avalia o seu nível de inteligência?</label>
             <small id="inteligente" class="form-text text-muted">
               <br>Responda o quiz no link a seguir e selecione uma opção.
-              <a href="https://querobolsa.com.br/revista/3-testes-de-qi-online-e-gratuitos" target="_blank">Link Quiz</a>
+              <a href="https://www.tuasaude.com/teste/qi/" target="_blank">https://www.tuasaude.com/teste/qi/</a>
             </small>
             <select class="form-control" id="inteligente">
-              <option value="1">1. Muito pouco</option>
-              <option value="2">2. Pouco</option>
-              <option value="3">3. Moderado</option>
-              <option value="4">4. Muito</option>
-              <option value="5">5. Super</option>
+              <option value="60">1. De 60 a 69</option>
+              <option value="70">2. De 70 a 79</option>
+              <option value="80">3. De 80 a 89</option>
+              <option value="90">4. De 90 a 99</option>
+              <option value="100">5. De 100 a 109</option>
+              <option value="110">6. De 110 a 119</option>
+              <option value="120">7. De 120 a 129</option>
+              <option value="130">8. De 130 a 140</option>
             </select>
           </div>
 
