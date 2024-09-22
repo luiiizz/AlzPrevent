@@ -49,24 +49,47 @@
         <form class="mt-4">
           <div class="form-group mt-4">
             <label for="preocupacao">Você se considera uma pessoa muito preocupada?</label>
-              <select class="form-control" id="preocupacao">
+              <select class="form-control" id="preocupacao" name="preocupacao">
                 <option value="20">1. Muito pouco</option>
                 <option value="40">2. Pouco</option>
                 <option value="60">3. Moderado</option>
                 <option value="80">4. Muito</option>
                 <option value="100">5. Super</option>
               </select>
+          </div>
+
+          <div class="form-group mt-4">
+            <label for="diabetes"> Você foi diagnosticado(a) com diabetes?</label>
+            <select class="form-control" id="diabetes" name="diabetes">
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
             </select>
           </div>
 
-
           <div class="form-group mt-4">
-            <label for="altura">Você já fez teste de capacidade cognitiva? (Mini Exame do Estado Mental (MEEM)) Se sim, qual foi sua pontuação?</label>
-            <input type="number" class="form-control" id="altura" placeholder="Informe um número entre 1 e 30" max="30" min="1">
+            <label for="pressao"> Você já teve algum diagnóstico de pressão alta?</label>
+            <select class="form-control" id="pressao" name="pressao">
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+            </select>
           </div>
 
-         
+          <div class="form-group mt-4">
+            <label for="parental">Qual a idade que seu pai tinha quando faleceu? (Se vivo, informe a idade atual)?</label>
+            <input type="number" name="parental" class="form-control" id="parental" min="1" placeholder="Informe a idade">
+          </div>
 
+          <div class="form-group mt-4">
+            <label for="parental">Qual a frequência com que você consome alimentos ricos em ferro, como carnes vermelhas, leguminosas e vegetais de folhas verdes?</label>
+            <select class="form-control" id="preocupacao" name="preocupacao">
+              <option value="100">Diariamente</option>
+              <option value="75">3-5 vezes por semana</option>
+              <option value="50">1-2 vezes por semana</option>
+              <option value="25">Menos de 1 vez por semana</option>
+              <option value="0">Nunca</option>
+            </select>
+          </div>
+          
         </form>
           
         <div class="d-flex justify-content-between">

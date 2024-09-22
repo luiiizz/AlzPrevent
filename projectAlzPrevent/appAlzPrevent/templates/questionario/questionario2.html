@@ -49,7 +49,7 @@
         <form class="mt-4">
           <div class="form-group">
             <label for="colesterol">Você sofre de colesterol alto? Qual seu nível de colesterol LDL (colesterol "ruim”)?</label>
-            <select class="form-control" id="escolaridade">
+            <select class="form-control" id="escolaridade" name="escolaridade">
               <option value="1">Ideal: inferior a 130 mg/dL</option>
               <option value="2">Próximo ao ideal: 130-159 mg/dL</option>
               <option value="3">Alto: 160-189 mg/dL</option>
@@ -59,7 +59,7 @@
 
           <div class="form-group mt-4">
             <label for="neurociticismo">Você sofre de Neurociticismo (caracterizado por tristeza, mau humor e instabilidade emocional)?</label>
-            <select class="form-control" id="neurociticismo">
+            <select class="form-control" id="neurociticismo" name="neurociticismo">
               <option value="1">Sim</option>
               <option value="0">Não</option>
             </select>
@@ -67,7 +67,7 @@
 
           <div class="form-group mt-4">
             <label for="matamatica">Você tem boas habilidades matemáticas? Se sim, classifique.</label>
-            <select class="form-control" id="matamatica">
+            <select class="form-control" id="matamatica" name="matamatica">
               <option value="1">1. Ruim</option>
               <option value="2">2. Regular</option>
               <option value="3">3. Boa</option>
@@ -109,13 +109,13 @@
           </div>-->
 
           <div class="form-group mt-4">
-            <label for="altura">Você já fez teste de capacidade cognitiva? (Mini Exame do Estado Mental (MEEM)) Se sim, qual foi sua pontuação?</label>
-            <input type="number" class="form-control" id="altura" placeholder="Informe um número entre 1 e 30" max="30" min="1">
+            <label for="MEEM">Você já fez teste de capacidade cognitiva? (Mini Exame do Estado Mental (MEEM)) Se sim, qual foi sua pontuação?</label>
+            <input type="number" name="MEEM" class="form-control" id="MEEM" placeholder="Informe um número entre 1 e 30" max="30" min="1">
           </div>
 
           <div class="form-group mt-4">
             <label for="fev1"> Você tem histórico de problemas respiratórios, como asma ou bronquite?</label>
-            <select class="form-control" id="fev1">
+            <select class="form-control" id="fev1" name="fev1">
               <option value="1">Sim</option>
               <option value="0">Não</option>
             </select>

@@ -49,22 +49,22 @@
         <form class="mt-4" method="post" action=""> 
           <div class="form-group">
             <label for="idade">Qual sua idade?</label>
-            <input type="number" class="form-control" id="idade" min="1" placeholder="Informe a idade">
+            <input type="number" name="idade" class="form-control" id="idade" min="1" placeholder="Informe a idade">
           </div>
 
           <div class="form-group mt-4">
             <label for="altura">Qual sua altura?</label>
-            <input type="number" class="form-control" id="altura" min="50" max="300" step="0.01" placeholder="Informe a altura. Ex: 1.75" required>
+            <input type="number" name="altura" class="form-control" id="altura" min="50" max="300" step="0.01" placeholder="Informe a altura. Ex: 1.75" required>
           </div>
 
           <div class="form-group mt-4">
-            <label for="altura">Qual seu peso?</label>
-            <input type="number" class="form-control" id="altura" min="1" placeholder="Informe o peso. Ex: 70">
+            <label for="peso">Qual seu peso?</label>
+            <input type="number" name="peso" class="form-control" id="peso" min="1" placeholder="Informe o peso. Ex: 70">
           </div>
 
           <div class="form-group mt-4">
             <label for="historico">Há histórico de Alzheimer na sua família?</label>
-            <select class="form-control" id="historico">
+            <select class="form-control" id="historico" name="historico">
               <option value="1">Sim</option>
               <option value="0">Não</option>
             </select>
@@ -72,7 +72,7 @@
 
           <div class="form-group mt-4">
             <label for="escolaridade">Qual sua escolaridade?</label>
-            <select class="form-control" id="escolaridade">
+            <select class="form-control" id="escolaridade" name="escolaridade">
               <option value="1">1. Analfabeto</option>
               <option value="2">2. Fundamental Incompleto</option>
               <option value="3">3. Fundamental Completo</option>
@@ -91,7 +91,7 @@
               <br>Responda o quiz no link a seguir e selecione uma opção.
               <a href="https://www.tuasaude.com/teste/qi/" target="_blank">https://www.tuasaude.com/teste/qi/</a>
             </small>
-            <select class="form-control" id="inteligente">
+            <select class="form-control" id="inteligente" name="inteligente">
               <option value="60">1. De 60 a 69</option>
               <option value="70">2. De 70 a 79</option>
               <option value="80">3. De 80 a 89</option>
