@@ -1,4 +1,3 @@
-#Dica: Executar no Google Colab e gera o arquivo model_xgb.pkl para ser utilizado no django
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
@@ -16,7 +15,7 @@ np.random.seed(42)  # Para reprodutibilidade
 education = np.random.uniform(1, 8, n_individuos)
 
 # Post bronchodilator FEV1 (forçado volume expiratório)
-fev1 = np.random.choice([0, 1], n_individuos)
+#fev1 = np.random.choice([0, 1], n_individuos)
 
 # Iron status biomarkers (iron levels): valor de 20 a 160 (mcg/dL)
 iron_levels = np.random.uniform(20, 160, n_individuos)
@@ -74,7 +73,7 @@ or_weight = 0.607929803
 or_height = 0.188191974
 or_worry = 1.617789409
 or_diastolic_bp = 0.942787632
-or_fev1 = 1.322015221
+#or_fev1 = 1.322015221
 or_iron_levels = 0.775180544
 or_epigenetic_age = 1.0258077421715
 
@@ -92,7 +91,7 @@ p_weight = 0.001354383
 p_height = 0.001647619
 p_worry = 0.002242555
 p_diastolic_bp = 0.00273117
-p_fev1 = 5.03E-45
+#p_fev1 = 5.03E-45
 p_iron_levels = 0.000230725
 p_epigenetic_age = 0.430623074719789
 
@@ -114,7 +113,7 @@ weights = {
     'height': compute_p_value_weight(p_height),
     'worry': compute_p_value_weight(p_worry),
     'diastolic_bp': compute_p_value_weight(p_diastolic_bp),
-    'fev1': compute_p_value_weight(p_fev1),
+    #'fev1': compute_p_value_weight(p_fev1),
     'iron_levels': compute_p_value_weight(p_iron_levels),
     'epigenetic_age': compute_p_value_weight(p_epigenetic_age),
 }
@@ -137,7 +136,7 @@ epigenetic_age_norm = scaler.fit_transform(epigenetic_age.reshape(-1, 1)).flatte
 # Cálculo do risco ajustado (utilizando OR e p-value)
 risk_score = (
     education_norm * or_education * weights['education'] +
-    fev1 * or_fev1 * weights['fev1'] +
+    #fev1 * or_fev1 * weights['fev1'] +
     iron_levels_norm * or_iron_levels * weights['iron_levels'] +
     neuroticism * or_neuroticism * weights['neuroticism'] +
     cognitive_performance_norm * or_cognitive_performance * weights['cognitive_performance'] +
@@ -164,7 +163,7 @@ probability_da = risk_score_normalized * 100
 df = pd.DataFrame({
     'Individuo': individuos,
     'Educational_attainment': education,
-    'Post_bronchodilator_FEV1': fev1,
+    #'Post_bronchodilator_FEV1': fev1,
     'Iron_status_biomarkers': iron_levels,
     'Neuroticism': neuroticism,
     'Family_history_of_Alzheimers': family_history,
@@ -184,14 +183,56 @@ df = pd.DataFrame({
 })
 
 # Mostrar as primeiras linhas do DataFrame final
-#df.head()
+df.head()
 
 #df.to_csv('tcc_exposures.csv', index=False)
 
 
 
-#Etapa 2
 
+##################################################################################################################
+
+## Criando o DataFrame de impacto
+impact_data = {
+    'Variable': [
+        'Educational attainment', 'Neuroticism', 'Intelligence', 'Cognitive performance',
+        'Highest math class taken', 'LDL cholesterol levels', 'Family history of Alzheimer\'s disease',
+        'Type 1 diabetes', 'Parental longevity', 'Weight', 'Height', 'Worry',
+        'Diastolic blood pressure', # 'Post bronchodilator FEV1',
+        'Iron status biomarkers', 'Epigenetic age'
+    ],
+    'Odds Ratio (OR)': [
+        or_education, or_neuroticism, or_intelligence, or_cognitive_performance, or_highest_math,
+        or_ldl_cholesterol, or_family_history, or_type_1_diabetes, or_parental_longevity,
+        or_weight, or_height, or_worry, or_diastolic_bp, #or_fev1, 
+        or_iron_levels, or_epigenetic_age
+    ],
+    'P-Value Weight': [
+        weights['education'], weights['neuroticism'], weights['intelligence'], weights['cognitive_performance'],
+        weights['highest_math'], weights['ldl_cholesterol'], weights['family_history'], weights['type_1_diabetes'],
+        weights['parental_longevity'], weights['weight'], weights['height'], weights['worry'],
+        weights['diastolic_bp'], #weights['fev1'], 
+        weights['iron_levels'], weights['epigenetic_age']
+    ],
+    'Impact Score': [
+        or_education * weights['education'], or_neuroticism * weights['neuroticism'],
+        or_intelligence * weights['intelligence'], or_cognitive_performance * weights['cognitive_performance'],
+        or_highest_math * weights['highest_math'], or_ldl_cholesterol * weights['ldl_cholesterol'],
+        or_family_history * weights['family_history'], or_type_1_diabetes * weights['type_1_diabetes'],
+        or_parental_longevity * weights['parental_longevity'], or_weight * weights['weight'],
+        or_height * weights['height'], or_worry * weights['worry'], or_diastolic_bp * weights['diastolic_bp'],
+        #or_fev1 * weights['fev1'], 
+        or_iron_levels * weights['iron_levels'], or_epigenetic_age * weights['epigenetic_age']
+    ]
+}
+
+# Criar o DataFrame e exibir a tabela ordenada por 'Impact Score'
+impact_df = pd.DataFrame(impact_data).sort_values(by='Impact Score', ascending=False)
+
+# Mostrar a tabela
+impact_df
+
+###################################################################################################################
 
 
 import warnings
@@ -209,7 +250,8 @@ from sklearn.metrics import mean_squared_error, roc_auc_score, mean_absolute_err
 df['Has_DA'] = (df['Probability_of_DA (%)'] >= 60).astype(int)
 
 # Definir as variáveis independentes (features) e as variáveis alvo
-X = df[['Educational_attainment', 'Post_bronchodilator_FEV1', 'Iron_status_biomarkers',
+X = df[['Educational_attainment', #'Post_bronchodilator_FEV1', 
+        'Iron_status_biomarkers',
         'Neuroticism', 'Family_history_of_Alzheimers', 'Cognitive_performance',
         'LDL_cholesterol_levels', 'Type_1_diabetes',
         'Parental_longevity', 'Weight', 'Height', 'Worry', 'Diastolic_blood_pressure',
@@ -284,7 +326,7 @@ print(f"Root Mean Squared Error (RMSE): {np.sqrt(mean_squared_error(y_test_reg, 
 
 novo_dado = np.array([[
     np.random.uniform(1, 8),  # Educational attainment
-    np.random.choice([0, 1]),  # Post bronchodilator FEV1
+    #np.random.choice([0, 1]),  # Post bronchodilator FEV1
     np.random.uniform(20, 160),  # Iron status biomarkers
     np.random.choice([0, 1]),  # Neuroticism
     np.random.choice([0, 1]),  # Family history of Alzheimer's disease
@@ -304,7 +346,7 @@ novo_dado = np.array([[
 # Definindo as colunas de acordo com as variáveis
 colunas = [
     'Educational_attainment',
-    'Post_bronchodilator_FEV1',
+    #'Post_bronchodilator_FEV1',
     'Iron_status_biomarkers',
     'Neuroticism',
     'Family_history_of_Alzheimers',
@@ -346,13 +388,46 @@ print(f'Previsão XGBoost (Probabilidade de DA %): {previsao_xgb[0]:.2f}%')
 previsao_gb = gb_model.predict(novo_dado)
 print(f'Previsão Gradient Boosting (Probabilidade de DA %): {previsao_gb[0]:.2f}%')
 
-
-#df_novo_dado.head()
-
-#Salvar Modelo em pkl
 import pickle
 
 with open('model_xgb.pkl', 'wb') as file:
     pickle.dump(xgb_model, file)
 
+df_novo_dado.head()
 
+
+###################################################################################################################
+
+# Grafico de Comparação de Desempenho: Random Forest vs XGBoost 
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Definindo as métricas obtidas para os modelos Random Forest e XGBoost
+metrics = {
+    'Mean Squared Error (MSE)': [0.1620, 0.1420],  # Valores exemplares para Random Forest e XGBoost
+    'Mean Absolute Error (MAE)': [0.0800, 0.0650],  # Valores exemplares para Random Forest e XGBoost
+    'R² Score': [0.8400, 0.8750],  # Valores exemplares para Random Forest e XGBoost
+    'Root Mean Squared Error (RMSE)': [0.4020, 0.3768]  # Valores exemplares para Random Forest e XGBoost
+}
+
+# Nomes dos modelos para o gráfico
+models = ['Random Forest', 'XGBoost']
+
+# Configuração do gráfico de barras
+fig, ax = plt.subplots(2, 2, figsize=(12, 8))
+fig.suptitle('Comparação de Desempenho: Random Forest vs XGBoost', fontsize=16)
+
+# Mapeamento das métricas e gráficos para cada subplot
+for i, (metric, values) in enumerate(metrics.items()):
+    row, col = divmod(i, 2)
+    # ax[row, col].bar(models, values, color=['skyblue', 'salmon'])
+    ax[row, col].bar(models, values, color=['gray', 'black'])
+    ax[row, col].set_title(metric)
+    ax[row, col].set_ylabel(metric)
+    ax[row, col].set_ylim(0, max(values) * 1.4)
+    for j, v in enumerate(values):
+        ax[row, col].text(j, v + 0.02, f'{v:.4f}', ha='center', color='black', fontweight='bold')
+
+plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.show()

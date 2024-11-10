@@ -46,15 +46,17 @@
           Responda as perguntas a seguir para análise de riscos do desenvolvimento futuro de Alzheimer
         </p>
 
-        <form class="mt-4" method="post" action=""> 
+        <form class="mt-4" method="post" action="{% url 'processar_dados' %}">
+          {% csrf_token %}
+
           <div class="form-group">
             <label for="idade">Qual sua idade?</label>
             <input type="number" name="idade" class="form-control" id="idade" min="1" placeholder="Informe a idade">
           </div>
 
           <div class="form-group mt-4">
-            <label for="altura">Qual sua altura?</label>
-            <input type="number" name="altura" class="form-control" id="altura" min="50" max="300" step="0.01" placeholder="Informe a altura. Ex: 1.75" required>
+            <label for="altura">Qual sua altura? (Em centímetros)</label>
+            <input type="number" name="altura" class="form-control" id="altura" min="20" max="300" step="0.01" placeholder="Informe a altura. Ex: 175" required>
           </div>
 
           <div class="form-group mt-4">
@@ -103,17 +105,19 @@
             </select>
           </div>
 
+            
+          <div class="d-flex justify-content-between">
+            <button class="animated-button2" type="reset">
+              <span class="text">Cancelar</span>
+            </button>
+
+            <button class="animated-button" type="submit">
+              <span class="text">Próximo</span>
+            </button>
+          </div>
+
         </form>
           
-        <div class="d-flex justify-content-between">
-          <button class="animated-button2" type="reset">
-            <span class="text">Cancelar</span>
-          </button>
-
-          <button class="animated-button" type="submit" onclick="bt_quest2()">
-            <span class="text">Próximo</span>
-          </button>
-        </div>
 
       </div>
 

@@ -46,7 +46,9 @@
           Continue respondendo ...
         </p>
 
-        <form class="mt-4">
+        <form class="mt-4" method="post" action="{% url 'processar_dados' %}">
+          {% csrf_token %}
+
           <div class="form-group">
             <label for="colesterol">Você sofre de colesterol alto? Qual seu nível de colesterol LDL (colesterol "ruim”)?</label>
             <select class="form-control" id="escolaridade" name="escolaridade">
@@ -121,17 +123,19 @@
             </select>
           </div>
 
+          
+          <div class="d-flex justify-content-between">
+            <button class="animated-button2" onclick="bt_quest1()">
+              <span class="text">Voltar</span>
+            </button>
+
+            <button class="animated-button" type="submit">
+              <span class="text">Próximo</span>
+            </button>
+          </div>
+
         </form>
           
-        <div class="d-flex justify-content-between">
-          <button class="animated-button2" onclick="bt_quest1()">
-            <span class="text">Voltar</span>
-          </button>
-
-          <button class="animated-button" type="submit" onclick="bt_prox()">
-            <span class="text">Próximo</span>
-          </button>
-        </div>
 
       </div>
 

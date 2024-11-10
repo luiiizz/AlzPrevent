@@ -46,7 +46,9 @@
           Continue respondendo ...
         </p>
 
-        <form class="mt-4">
+        <form class="mt-4" method="post" action="{% url 'processar_dados' %}">
+          {% csrf_token %}
+
           <div class="form-group mt-4">
             <label for="preocupacao">Você se considera uma pessoa muito preocupada?</label>
               <select class="form-control" id="preocupacao" name="preocupacao">
@@ -76,7 +78,7 @@
 
           <div class="form-group mt-4">
             <label for="parental">Qual a idade que seu pai tinha quando faleceu? (Se vivo, informe a idade atual)?</label>
-            <input type="number" name="parental" class="form-control" id="parental" min="1" placeholder="Informe a idade">
+            <input type="number" name="parental" class="form-control" id="parental" min="1" placeholder="Informe a idade" required>
           </div>
 
           <div class="form-group mt-4">
@@ -90,17 +92,18 @@
             </select>
           </div>
           
+          <div class="d-flex justify-content-between">
+            <button class="animated-button2" onclick="bt_quest1()">
+              <span class="text">Voltar</span>
+            </button>
+
+            <button class="animated-button" type="submit" onclick="bt_result()">
+              <span class="text">Enviar</span>
+            </button>
+          </div>
+          
         </form>
           
-        <div class="d-flex justify-content-between">
-          <button class="animated-button2" onclick="bt_quest1()">
-            <span class="text">Voltar</span>
-          </button>
-
-          <button class="animated-button" type="submit" onclick="bt_result()">
-            <span class="text">Enviar</span>
-          </button>
-        </div>
 
       </div>
 

@@ -2,7 +2,7 @@ from django import forms
 
 class PredictionForm(forms.Form):
     educational_attainment = forms.FloatField(label="Years of Education")
-    post_bronchodilator_fev1 = forms.ChoiceField(choices=[(0, 'No'), (1, 'Yes')], label="Post Bronchodilator FEV1")
+    #post_bronchodilator_fev1 = forms.ChoiceField(choices=[(0, 'No'), (1, 'Yes')], label="Post Bronchodilator FEV1")
     iron_status_biomarkers = forms.FloatField(label="Iron Levels")
     neuroticism = forms.ChoiceField(choices=[(0, 'No'), (1, 'Yes')], label="Neuroticism")
     family_history = forms.ChoiceField(choices=[(0, 'No'), (1, 'Yes')], label="Family History of Alzheimer's")

@@ -9,5 +9,9 @@ urlpatterns = [
     path('questionario/', views.questionario, name='questionario'),
     path('questionario2/', views.questionario2, name='questionario2'),
     path('questionario3/', views.questionario3, name='questionario3'),
+    path('processar_dados/', views.processar_dados, name='processar_dados'),
+    path('realizar_predicao/', views.realizar_predicao, name='realizar_predicao'),
     path('resultado/', views.resultado, name='resultado'),
+    path('teste/', views.teste, name='teste'),
+
 ]
