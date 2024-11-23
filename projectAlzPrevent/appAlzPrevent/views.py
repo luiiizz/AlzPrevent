@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
+import numpy as np
+from django.contrib import messages
 
 # Create your views here.
 
@@ -56,6 +58,10 @@ def teste(request):
             # Converter dados para o formato adequado do modelo
             input_data = np.array([data])
 
+            print('teste')
+            print(data)
+            print(input_data)
+
             # Fazer a previsão usando o modelo XGBoost
             predicted_probability = xgb_model.predict(input_data)[0]
 
@@ -74,21 +80,23 @@ def processar_dados(request):
         # Captura dados dos formulários
         dados = request.POST.dict()
 
-        # Aqui você pode acumular os dados dos três questionários em uma sessão
+        # Acumular os dados dos três questionários em uma sessão
         questionarios = request.session.get('questionarios', {})
         questionarios.update(dados)
         request.session['questionarios'] = questionarios
-        print(questionarios)
-        print(questionarios['altura'])
-        print(questionarios['parental'])
+        #print(questionarios)
+        #print(questionarios['altura'])
+        #print(questionarios['parental'])
+
         # Verifique se estamos no último formulário e redirecione para a view de predição
-        if questionarios['parental'] != '':  # Adapte conforme a estrutura de URL
+        if 'preocupacao' in dados: # Preencheu todos os questionarios
             return redirect('realizar_predicao')  # Redireciona para a função de predição
+            #print('processando')
         
-        elif questionarios['parental'] == '':  # Adapte conforme a estrutura de URL
+        elif 'colesterol' in dados:  # Preencheu até o segundo questionario
             return redirect('questionario3')  # Redireciona para a função de predição
         
-        else:
+        else: # Preencheu somente o primeiro questionario
             # Redireciona para o próximo questionário
             return redirect('questionario2')  # Mapeie corretamente na URL
 
@@ -96,23 +104,52 @@ def processar_dados(request):
 
 
 def realizar_predicao(request):
+
     # Pega os dados completos dos três questionários salvos na sessão
     questionarios = request.session.get('questionarios', {})
 
+    print('Questionario submetido:')
+    print(questionarios, len(questionarios))
+
     # Certifique-se de que todos os dados necessários estão presentes
-    expected_number_of_fields = 15
+    expected_number_of_fields = 16
     if len(questionarios) < expected_number_of_fields:  # Ajuste para o número de campos necessários
+        messages.error(request, 'Por favor, preencha todos os campos antes de continuar.')
         return redirect('questionario')  # Redireciona para o início se os dados estiverem incompletos
 
+    # Remove o campo desnecessário (token CSRF)
+    questionarios_limpo = [
+
+        float(questionarios.get('escolaridade', 0)),
+        #int(form.cleaned_data['post_bronchodilator_fev1']),
+        float(questionarios.get('ferro', 0)),
+        int(questionarios.get('neurociticismo', 0)),
+        int(questionarios.get('historico', 0)),
+        float(questionarios.get('MEEM', 0) or 0), 
+        float(questionarios.get('colesterol', 0)),
+        int(questionarios.get('diabetes', 0)),
+        float(questionarios.get('parental', 0)),
+        float(questionarios.get('peso', 0)),
+        float(questionarios.get('altura', 0)),
+        float(questionarios.get('preocupacao', 0)),
+        int(questionarios.get('pressao', 0)),
+        float(questionarios.get('matamatica', 0)),
+        float(questionarios.get('inteligente', 0)),
+        float(questionarios.get('idade', 0))
+    ]
+    
     # Carrega o modelo e faz a predição
     
-    
     # Converter dados para o formato adequado do modelo
-    input_data = np.array([questionarios])
+    input_data = np.array([questionarios_limpo])
+    
+    print('Dados limpos:', input_data)
     resultado = xgb_model.predict(input_data)[0]  # `predict` usa o modelo para prever
 
+    print('Resultado:', resultado)
+
     # Limpa os dados da sessão após o uso
-    del request.session['questionarios']
+    #del request.session['questionarios']
 
     # Renderiza o resultado
-    return render(request, 'result.html', {'resultado': resultado})
+    return render(request, 'resultado/resultado.html', {'resultado': resultado})

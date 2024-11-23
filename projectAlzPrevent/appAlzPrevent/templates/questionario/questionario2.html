@@ -51,7 +51,7 @@
 
           <div class="form-group">
             <label for="colesterol">Você sofre de colesterol alto? Qual seu nível de colesterol LDL (colesterol "ruim”)?</label>
-            <select class="form-control" id="escolaridade" name="escolaridade">
+            <select class="form-control" id="colesterol" name="colesterol">
               <option value="1">Ideal: inferior a 130 mg/dL</option>
               <option value="2">Próximo ao ideal: 130-159 mg/dL</option>
               <option value="3">Alto: 160-189 mg/dL</option>
@@ -115,17 +115,17 @@
             <input type="number" name="MEEM" class="form-control" id="MEEM" placeholder="Informe um número entre 1 e 30" max="30" min="1">
           </div>
 
-          <div class="form-group mt-4">
+          <!-- <div class="form-group mt-4"> 
             <label for="fev1"> Você tem histórico de problemas respiratórios, como asma ou bronquite?</label>
             <select class="form-control" id="fev1" name="fev1">
               <option value="1">Sim</option>
               <option value="0">Não</option>
             </select>
-          </div>
+          </div>-->
 
           
           <div class="d-flex justify-content-between">
-            <button class="animated-button2" onclick="bt_quest1()">
+            <button class="animated-button2" type="button" onclick="bt_quest1()">
               <span class="text">Voltar</span>
             </button>
 
@@ -151,7 +151,7 @@
       }
 
       function bt_prox(){
-        self.location = "{% url 'questionario3'%}"
+        //self.location = "{% url 'questionario3'%}"
       }
       function bt_sair(){
         self.location = "{% url 'home'%}"
