@@ -268,11 +268,11 @@ body {
 }
 
 .risk-table .positive {
-  color: green;
+  color: red;
   font-weight: bold;
 }
 
 .risk-table .negative {
-  color: red;
+  color: green;
   font-weight: bold;
 }
