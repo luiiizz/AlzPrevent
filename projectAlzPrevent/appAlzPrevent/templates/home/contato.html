@@ -35,7 +35,8 @@
                 </ul>
             </nav>
             <h1 class="title-alz">AlzPrevent</h1>
-            <button class="btn-entrar" onclick="bt_quest()">Iniciar</button>
+            <!-- <button class="btn-entrar" onclick="bt_quest()">Entrar</button> -->
+            <button class="btn-entrar" onclick=""></button>
         </div>
     </header>
 
@@ -70,7 +71,7 @@
           </button>
           
 
-          <button class="animated-button2" onclick="bt_saiba()">
+          <button class="animated-button2">
             <a class="text" href="{% url 'sobre'%}" >Saiba Mais</a>
           </button>
         </div>
@@ -87,9 +88,6 @@
     <script>
       function bt_quest(){
         self.location = "{% url 'questionario'%}"
-      }
-      function bt_saiba(){
-        self.location = "{% url 'sobre'%}"
       }
     </script>
 

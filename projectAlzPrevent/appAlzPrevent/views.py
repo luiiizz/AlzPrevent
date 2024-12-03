@@ -7,6 +7,15 @@ from django.contrib import messages
 
 def home(request):
     return render(request, 'home/home.html')
+    
+def sobre(request):
+    return render(request, 'home/sobre.html')
+
+def contato(request):
+    return render(request, 'home/contato.html')
+
+def prevencao(request):
+    return render(request, 'home/prevencao.html')
 
 def questionario(request):
     return render(request, 'questionario/questionario.html')

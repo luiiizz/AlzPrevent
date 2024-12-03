@@ -1,0 +1,187 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/alzheimer-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      main {
+        margin: 2rem auto;
+        max-width: 80%;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+      main h2 {
+        font-family: 'Poetsen One', sans-serif;
+        color: #6c63ff;
+        margin-bottom: 1rem;
+      }
+      main section h3 {
+        color: #4c4c6d;
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+      }
+      main section p {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+      main section ul {
+        list-style: none;
+        padding-left: 1rem;
+      }
+      main section ul li {
+        margin-bottom: 0.5rem;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+      main section ul li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        color: #6c63ff;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .text-center em {
+        color: #6c63ff;
+        font-weight: 500;
+      }
+      .btn-primary {
+        background-color: #6c63ff;
+        border: none;
+        padding: 0.5rem 1rem;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background 0.3s ease;
+      }
+      .btn-primary:hover {
+        background-color: #514dc1;
+      }
+    </style>
+
+    <title>Prevenção</title>
+  </head>
+  <body>
+    <header class="mt-3 ">
+        <div class="d-flex container justify-content-between align-items-center" style="max-width: 90vw !important;">
+            <nav class="">
+                <ul class="d-flex justify-content-around" style="padding: 0;">
+                    <li><a href="{% url 'home'%}" class="links">Início</a></li>
+                    <li><a href="{% url 'sobre'%}" class="links">Sobre nós</a></li>
+                    <!-- <li><a href="{% url 'contato'%}" class="links">Contato</a></li> -->
+                    <li><a href="{% url 'prevencao'%}" class="links">Prevenção</a></li>
+                </ul>
+            </nav>
+            <h1 class="title-alz">AlzPrevent</h1>
+            <button class="btn-entrar" onclick="bt_quest()">Iniciar</button>
+        </div>
+    </header>
+
+    <main>
+      <section class="text-center">
+        <h2>Prevenções e Recomendações</h2>
+        <p>
+          Descubra como reduzir fatores de risco e manter sua saúde cognitiva em dia.  
+        </p>
+      </section>
+      
+      <div class="text-center">
+        <img class="im-madam img-fluid" style="width: 40vw;" src="{% static 'images/alz-2.png' %}" alt="main image">
+      </div>
+
+      <section>
+        <h3>1. Saúde Cardiovascular</h3>
+        <p>Mantenha um coração saudável para preservar a saúde cerebral.</p>
+        <ul>
+          <li>Controle da pressão arterial.</li>
+          <li>Prática regular de exercícios aeróbicos.</li>
+          <li>Níveis adequados de glicose no sangue.</li>
+        </ul>
+      </section>
+
+
+      <section>
+        <h3>2. Hábitos Alimentares</h3>
+        <p>Uma dieta balanceada reduz inflamações e melhora o metabolismo cerebral.</p>
+        <ul>
+          <li>Dieta mediterrânea rica em vegetais, peixes e azeite.</li>
+          <li>Evite alimentos ultraprocessados e ricos em açúcar.</li>
+          <li>Mantenha um peso saudável.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>3. Saúde Mental</h3>
+        <p>O bem-estar emocional é essencial para reduzir os riscos da doença.</p>
+        <ul>
+          <li>Trate sintomas de depressão com ajuda profissional.</li>
+          <li>Mantenha uma vida social ativa.</li>
+          <li>Pratique meditação ou yoga.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>4. Estímulo Cognitivo</h3>
+        <p>Fortaleça conexões neurais com atividades desafiadoras.</p>
+        <ul>
+          <li>Resolva quebra-cabeças e jogos mentais.</li>
+          <li>Aprenda novas habilidades ou idiomas.</li>
+          <li>Envolva-se em atividades criativas.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>5. Qualidade do Sono</h3>
+        <p>O sono é crucial para evitar o acúmulo de toxinas no cérebro.</p>
+        <ul>
+          <li>Mantenha uma rotina de sono consistente.</li>
+          <li>Reduza o uso de eletrônicos à noite.</li>
+          <li>Consulte um médico em casos de apneia ou insônia.</li>
+        </ul>
+      </section>
+
+      <section class="text-center mt-4">
+        <p>
+          <em>A prevenção é o primeiro passo para proteger sua memória e garantir um futuro saudável.</em>
+        </p>
+        <a href="{% url 'questionario' %}" class="btn btn-primary">Começar Prevenção</a>
+      </section>
+    </main>
+
+
+    <script>
+      function bt_quest(){
+        self.location = "{% url 'questionario'%}"
+      }
+    </script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>

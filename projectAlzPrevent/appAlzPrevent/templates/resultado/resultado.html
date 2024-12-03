@@ -28,10 +28,10 @@
         <div class="d-flex container justify-content-between align-items-center" style="max-width: 90vw !important;">
             <nav class="">
                 <ul class="d-flex justify-content-around" style="padding: 0;">
-                    <li><a href="{% url 'home'%}" class="links">Início</a></li>
-                    <li><a href="#" class="links">Sobre nós</a></li>
-                    <li><a href="#" class="links">Contato</a></li>
-                    <li><a href="#" class="links">Prevenção</a></li>
+                  <li><a href="{% url 'home'%}" class="links">Início</a></li>
+                  <li><a href="{% url 'sobre'%}" class="links">Sobre nós</a></li>
+                  <!-- <li><a href="{% url 'contato'%}" class="links">Contato</a></li> -->
+                  <li><a href="{% url 'prevencao'%}" class="links">Prevenção</a></li>
                 </ul>
             </nav>
             <h1 class="title-alz">AlzPrevent</h1>
@@ -152,6 +152,7 @@
 
         </div>
 
+        <div class="d-flex">
           <button class="animated-button" onclick="bt_compartilhar()">
             <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -166,6 +167,9 @@
               ></path>
             </svg>
           </button>
+
+          <button class="animated-button" style="margin-left: 5vw;" onclick="bt_recom()">Mais recomendações</button>
+        </div>
           
       </div>
 
@@ -190,6 +194,11 @@
       function bt_compartilhar(){
         self.location = "https://twitter.com/intent/tweet?text=Confira%20meus%20resultados%20no%20AlzPrevent:%20{{ request.build_absolute_uri }}"
       }
+
+      function bt_recom(){
+        self.location = "{% url 'prevencao'%}"
+      }
+      
     </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

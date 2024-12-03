@@ -1,0 +1,146 @@
+{% load static %}
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/alzheimer-icon.png' %}">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      main {
+        margin: 2rem auto;
+        max-width: 80%;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+      main h2 {
+        font-family: 'Poetsen One', sans-serif;
+        color: #6c63ff;
+        margin-bottom: 1rem;
+      }
+      main section h3 {
+        color: #4c4c6d;
+        margin-bottom: 0.5rem;
+        font-size: 1.4rem;
+      }
+      main section p {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+      .contact-info {
+        margin-top: 2rem;
+        padding: 1rem;
+        background-color: #f1f1f1;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .contact-info h4 {
+        color: #6c63ff;
+        margin-bottom: 0.5rem;
+      }
+      .contact-info p {
+        margin: 0.5rem 0;
+        color: #444;
+      }
+    </style>
+
+    <title>Sobre</title>
+  </head>
+  <body>
+    <header class="mt-3 ">
+        <div class="d-flex container justify-content-between align-items-center" style="max-width: 90vw !important;">
+            <nav class="">
+                <ul class="d-flex justify-content-around" style="padding: 0;">
+                  <li><a href="{% url 'home'%}" class="links">Início</a></li>
+                  <li><a href="{% url 'sobre'%}" class="links">Sobre nós</a></li>
+                  <!-- <li><a href="{% url 'contato'%}" class="links">Contato</a></li> -->
+                  <li><a href="{% url 'prevencao'%}" class="links">Prevenção</a></li>
+                </ul>
+            </nav>
+            <h1 class="title-alz">AlzPrevent</h1>
+            <button class="btn-entrar" onclick="bt_quest()">Iniciar</button>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+      <section class="text-center">
+        <h2 class="mb-4">Sobre Nós</h2>
+        <p class="lead">
+          Bem-vindo à nossa aplicação web dedicada à análise preditiva e à prevenção da Doença de Alzheimer.
+        </p>
+      </section>
+
+      <section class="mt-4">
+        <h3>Nosso Projeto</h3>
+        <p>
+          Este projeto, intitulado <strong>"Modelo Preditivo com Base em Fatores de Risco e Associações Causais na Incidência do Desenvolvimento da Doença de Alzheimer"</strong>, foi desenvolvido por estudantes do Curso de Engenharia de Software da <strong>Universidade Evangélica de Goiás</strong>.
+        </p>
+        
+        <div class="text-center">
+          <img class="im-madam img-fluid" style="width: 20vw;" src="{% static 'images/about.png' %}" alt="main image">
+        </div>
+        <p>
+          Utilizando dados do banco <strong>AlzRiskMR</strong>, a aplicação permite identificar fatores de risco e analisar associações causais, contribuindo para a introdução de medidas preventivas direcionadas e personalizadas.
+        </p>
+      </section>
+
+      <section class="mt-4">
+        <h3>Nosso Objetivo</h3>
+        <p>
+          Aplicar tecnologias de ponta para auxiliar na identificação precoce da Doença de Alzheimer, promovendo a prevenção e mitigação dos impactos dessa patologia. Nossa missão é transformar dados e algoritmos em ferramentas úteis para uma vida cognitivamente saudável.
+        </p>
+      </section>
+
+      <section class="mt-4">
+        <h3>Equipe</h3>
+        <ul>
+          <li><strong>Luiz Henrique Bispo Barreira</strong> - <a href="mailto:luizhenriquebispo05@gmail.com">luizhenriquebispo05@gmail.com</a></li>
+          <li><strong>Lorrayne Annyelly Pereira Cardoso</strong> - <a href="mailto:lorrayneannyelly16@gmail.com">lorrayneannyelly16@gmail.com</a></li>
+        </ul>
+        <!-- <p class="mt-2">Orientação do <strong>Prof. Henrique Valle de Lima, Me.</strong></p> -->
+      </section>
+
+      <section class="mt-4 text-center">
+        <p>
+          <em>Junte-se a nós nesta jornada para um futuro mais saudável e consciente.</em>
+        </p>
+      </section>
+    </main>
+
+
+    </div>
+
+
+    <script>
+      function bt_quest(){
+        self.location = "{% url 'questionario'%}"
+      }
+    </script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
